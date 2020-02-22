@@ -1,0 +1,2 @@
+mrm_description
+-DCATKIN_DEVEL_PREFIX=/home/ros/SainSmart-6-DOF-Robot-Manipulator/simulation_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ros/SainSmart-6-DOF-Robot-Manipulator/simulation_ws/install -G Unix Makefiles
