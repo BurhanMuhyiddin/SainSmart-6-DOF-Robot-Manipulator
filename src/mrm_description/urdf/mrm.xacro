@@ -18,6 +18,17 @@
         <child link="waist"/>
     </joint>
 
+    <transmission name="trans1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="base_waist">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="servo1">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
     <link name="waist">
         <visual>
             <origin xyz="0.0 0.0 0.0495" rpy="0.0 0.0 0.0"/>       
@@ -36,6 +47,17 @@
         <child link="forearm"/>
     </joint>
 
+    <transmission name="trans2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="waist_forearm">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="servo2">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
     <link name="forearm">
         <visual>
             <origin xyz="0.0 0.0 0.06" rpy="0.0 0.0 0.0"/>
@@ -52,6 +74,17 @@
         <parent link="forearm"/>
         <child link="forearm_rotation"/>
     </joint>
+
+    <transmission name="trans3">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="forearm_forearmRotation">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="servo3">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
 
     <link name="forearm_rotation">
         <visual>
@@ -70,6 +103,17 @@
         <child link="wrist"/>
     </joint>
 
+    <transmission name="trans4">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="forearmRotation_wrist">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="servo4">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
     <link name="wrist">
         <visual>
             <origin xyz="0.0 0.0 0.0975" rpy="0.0 0.0 0.0"/>
@@ -86,6 +130,17 @@
         <parent link="wrist"/>
         <child link="wrist_rotation"/>
     </joint>
+
+    <transmission name="trans5">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="wrist_wristRotation">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="servo5">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
 
     <link name="wrist_rotation">
 
