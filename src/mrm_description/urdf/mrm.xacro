@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
-<robot name="robot_v1" xmlns:xacro="http://www.ros.org/wiki/xacro">
-    
+<robot name="myrobot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
     <link name="base">
         <visual>
             <geometry>
@@ -145,5 +145,12 @@
     <link name="wrist_rotation">
 
     </link>
+
+    <gazebo> 
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"> 
+            <robotnamespace>/myrobot</robotnamespace>
+            <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+        </plugin> 
+    </gazebo>
 
 </robot>
