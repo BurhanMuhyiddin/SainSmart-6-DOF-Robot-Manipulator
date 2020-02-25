@@ -3,18 +3,18 @@
     <rosparam file="$(find mrm_description)/config/robotManipulator_control.yaml" command="load" /> 
     <param name="robot_description" command="$(find xacro)/xacro '$(find mrm_description)/urdf/mrm.xacro'"/>
 
-    <!--<node name="rviz" pkg="rviz" type="rviz" args="-d $(find mrm_description)/launch/config.rviz"/>-->
+    <node name="robot_hardware_interface" pkg="mrm_description" type="robot_hardware_interface" output="screen"/>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mrm_description)/launch/config.rviz"/>
 
     <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-    output = "screen" ns="/myrobot" args="
-                            joint_state_controller
-                            base_waist_joint_position_controller
-                            waist_forearm_joint_position_controller
-                            forearm_forearmRotation_joint_position_controller
-                            forearmRotation_wrist_joint_position_controller
-                            wrist_wristRotation_joint_position_controller"
+    output = "screen" args="
+                            /mrm_description/joint_state_controller
+                            /mrm_description/base_waist_joint_position_controller
+                            /mrm_description/waist_forearm_joint_position_controller
+                            /mrm_description/forearm_forearmRotation_joint_position_controller
+                            /mrm_description/forearmRotation_wrist_joint_position_controller
+                            /mrm_description/wrist_wristRotation_joint_position_controller"
                             />
-
-    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
 
 </launch>
