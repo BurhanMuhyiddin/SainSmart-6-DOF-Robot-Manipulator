@@ -9,6 +9,8 @@ project(mrm_description)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   urdf
+  controller_manager
+  rospy
 )
 
 ## System dependencies are found with CMake's conventions
@@ -101,9 +103,9 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
+  INCLUDE_DIRS include
 #  LIBRARIES mrm_description
-#  CATKIN_DEPENDS urdf
+  CATKIN_DEPENDS urdf controller_manager rospy
 #  DEPENDS system_lib
 )
 
@@ -114,8 +116,9 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+ include
   ${catkin_INCLUDE_DIRS}
+  ${Boost_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -147,6 +150,9 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+
+add_executable(robot_hardware_interface src/robot_hardware_interface_node.cpp)
+target_link_libraries(robot_hardware_interface ${catkin_LIBRARIES})
 
 #############
 ## Install ##
